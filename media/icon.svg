@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background with subtle gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#474A8A"/>
+      <stop offset="100%" style="stop-color:#383B6E"/>
+    </linearGradient>
+    
+    <!-- Glow effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main circle background -->
+  <circle cx="100" cy="100" r="90" fill="url(#bgGradient)"/>
+  
+  <!-- Code brackets with subtle glow -->
+  <g filter="url(#glow)" opacity="0.9">
+    <path d="M65 70 L45 100 L65 130" stroke="#8993be" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M135 70 L155 100 L135 130" stroke="#8993be" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Horizontal lines -->
+  <line x1="70" y1="65" x2="130" y2="65" stroke="#8993be" stroke-width="3" opacity="0.5"/>
+  <line x1="70" y1="135" x2="130" y2="135" stroke="#8993be" stroke-width="3" opacity="0.5"/>
+  
+  <!-- Main PHP text -->
+  <text x="100" y="108" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#ffffff" text-anchor="middle">PHP</text>
+  
+  <!-- PRO text -->
+  <text x="145" y="80" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FF5D5D" text-anchor="middle">PRO</text>
+  
+  <!-- Rocket symbol -->
+  <g transform="translate(155, 72) rotate(45) scale(0.4)">
+    <path d="M10,40 L20,20 L30,40 L20,35 Z" fill="#FF5D5D"/>
+    <circle cx="20" cy="25" r="8" fill="#ffffff"/>
+    <!-- Rocket trail -->
+    <g opacity="0.7">
+      <line x1="20" y1="40" x2="20" y2="45" stroke="#FF5D5D" stroke-width="2"/>
+      <line x1="17" y1="42" x2="17" y2="47" stroke="#FF5D5D" stroke-width="2"/>
+      <line x1="23" y1="42" x2="23" y2="47" stroke="#FF5D5D" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

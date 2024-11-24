@@ -1,0 +1,407 @@
+{
+    "Try Catch": {
+        "prefix": "tc",
+        "body": [
+            "try {",
+            "    $1",
+            "} catch (\\Exception $e) {",
+            "    error_log($e->getMessage());",
+            "}"
+        ],
+        "description": "Try-catch block with error logging",
+        "category": "Error Handling",
+        "tags": [
+            "error",
+            "exception"
+        ]
+    },
+    "Foreach Loop": {
+        "prefix": "fe",
+        "body": [
+            "foreach ($${1:array} as $${2:value}) {",
+            "    $3",
+            "}"
+        ],
+        "description": "Foreach loop",
+        "category": "Loops",
+        "tags": [
+            "array",
+            "loop"
+        ]
+    },
+    "Array Map": {
+        "prefix": "map",
+        "body": [
+            "$${1:result} = array_map(function($${2:item}) {",
+            "    return $3;",
+            "}, $${4:array});"
+        ],
+        "description": "Array map function",
+        "category": "Arrays",
+        "tags": [
+            "array",
+            "map"
+        ]
+    },
+    "Array Filter": {
+        "prefix": "filter",
+        "body": [
+            "$${1:result} = array_filter($${2:array}, function($${3:item}) {",
+            "    return $4;",
+            "});"
+        ],
+        "description": "Array filter function",
+        "category": "Arrays",
+        "tags": [
+            "array",
+            "filter"
+        ]
+    },
+    "Array Reduce": {
+        "prefix": "reduce",
+        "body": [
+            "$${1:result} = array_reduce($${2:array}, function($${3:carry}, $${4:item}) {",
+            "    return $${3:carry} + $${4:item};",
+            "}, $5);"
+        ],
+        "description": "Array reduce function",
+        "category": "Arrays",
+        "tags": [
+            "array",
+            "reduce"
+        ]
+    },
+    "Promise-like Async": {
+        "prefix": "prom",
+        "body": [
+            "$${1:promise} = new \\Promise(function($resolve, $reject) {",
+            "    $2",
+            "});"
+        ],
+        "description": "Create a new Promise-like async operation",
+        "category": "Async",
+        "tags": [
+            "promise",
+            "async"
+        ]
+    },
+    "Async Function": {
+        "prefix": "afn",
+        "body": [
+            "async function ${1:functionName}($${2:params}): Promise {",
+            "    $3",
+            "}"
+        ],
+        "description": "Create an async function",
+        "category": "Functions",
+        "tags": [
+            "async",
+            "function"
+        ]
+    },
+    "Class Definition": {
+        "prefix": "cls",
+        "body": [
+            "class ${1:ClassName}",
+            "{",
+            "    private $${2:property};",
+            "",
+            "    public function __construct($${3:params})",
+            "    {",
+            "        $4",
+            "    }",
+            "}"
+        ],
+        "description": "Define a class",
+        "category": "Classes",
+        "tags": [
+            "class",
+            "oop"
+        ]
+    },
+    "Interface": {
+        "prefix": "int",
+        "body": [
+            "interface ${1:InterfaceName}",
+            "{",
+            "    public function ${2:methodName}($${3:params}): ${4:returnType};",
+            "}"
+        ],
+        "description": "Define an interface",
+        "category": "Types",
+        "tags": [
+            "interface",
+            "type"
+        ]
+    },
+    "Method Definition": {
+        "prefix": "met",
+        "body": [
+            "public function ${1:methodName}($${2:params}): ${3:returnType}",
+            "{",
+            "    $4",
+            "}"
+        ],
+        "description": "Define a class method",
+        "category": "Classes",
+        "tags": [
+            "method",
+            "class"
+        ]
+    },
+    "Getter": {
+        "prefix": "get",
+        "body": [
+            "public function get${1:PropertyName}(): ${2:type}",
+            "{",
+            "    return $this->${3:property};",
+            "}"
+        ],
+        "description": "Define a getter method",
+        "category": "Classes",
+        "tags": [
+            "getter",
+            "class"
+        ]
+    },
+    "Setter": {
+        "prefix": "set",
+        "body": [
+            "public function set${1:PropertyName}($${2:value}): void",
+            "{",
+            "    $this->${3:property} = $${2:value};",
+            "}"
+        ],
+        "description": "Define a setter method",
+        "category": "Classes",
+        "tags": [
+            "setter",
+            "class"
+        ]
+    },
+    "Enum": {
+        "prefix": "enum",
+        "body": [
+            "enum ${1:EnumName}",
+            "{",
+            "    case ${2:CASE_NAME} = '${3:value}';",
+            "}"
+        ],
+        "description": "Define an enum (PHP 8.1+)",
+        "category": "Types",
+        "tags": [
+            "enum",
+            "type"
+        ]
+    },
+    "Constructor Property Promotion": {
+        "prefix": "ctor",
+        "body": [
+            "public function __construct(",
+            "    private ${1:type} $${2:property},",
+            ") {",
+            "    $3",
+            "}"
+        ],
+        "description": "Constructor with property promotion (PHP 8.0+)",
+        "category": "Classes",
+        "tags": [
+            "constructor",
+            "class"
+        ]
+    },
+    "Abstract Class": {
+        "prefix": "abscls",
+        "body": [
+            "abstract class ${1:ClassName}",
+            "{",
+            "    abstract public function ${2:methodName}(): ${3:returnType};",
+            "",
+            "    public function ${4:concreteMethod}(): ${5:returnType}",
+            "    {",
+            "        $6",
+            "    }",
+            "}"
+        ],
+        "description": "Create an abstract class",
+        "category": "Classes",
+        "tags": [
+            "abstract",
+            "class"
+        ]
+    },
+    "Namespace": {
+        "prefix": "ns",
+        "body": [
+            "namespace ${1:Namespace};",
+            "",
+            "use ${2:Package}\\${3:Class};"
+        ],
+        "description": "Create a namespace declaration",
+        "category": "Modules",
+        "tags": [
+            "namespace",
+            "module"
+        ]
+    },
+    "Type Declaration": {
+        "prefix": "type",
+        "body": [
+            "/** @var ${1:type} */",
+            "private $${2:property};"
+        ],
+        "description": "Type declaration with PHPDoc",
+        "category": "Types",
+        "tags": [
+            "type",
+            "phpdoc"
+        ]
+    },
+    "Trait": {
+        "prefix": "trait",
+        "body": [
+            "trait ${1:TraitName}",
+            "{",
+            "    public function ${2:methodName}(): ${3:returnType}",
+            "    {",
+            "        $4",
+            "    }",
+            "}"
+        ],
+        "description": "Define a trait",
+        "category": "Classes",
+        "tags": [
+            "trait",
+            "class"
+        ]
+    },
+    "Property Type Declaration": {
+        "prefix": "prop",
+        "body": [
+            "private ${1:type} $${2:property};"
+        ],
+        "description": "Declare a typed property",
+        "category": "Classes",
+        "tags": [
+            "property",
+            "type"
+        ]
+    },
+    "Readonly Property": {
+        "prefix": "readonly",
+        "body": [
+            "public readonly ${1:type} $${2:property};"
+        ],
+        "description": "Declare a readonly property (PHP 8.1+)",
+        "category": "Classes",
+        "tags": [
+            "readonly",
+            "property"
+        ]
+    },
+    "Match Expression": {
+        "prefix": "match",
+        "body": [
+            "$${1:result} = match ($${2:value}) {",
+            "    ${3:condition} => ${4:result},",
+            "    default => ${5:defaultResult},",
+            "};"
+        ],
+        "description": "Match expression (PHP 8.0+)",
+        "category": "Control Flow",
+        "tags": [
+            "match",
+            "switch"
+        ]
+    },
+    "Attribute": {
+        "prefix": "attr",
+        "body": [
+            "#[${1:AttributeName}]"
+        ],
+        "description": "Add an attribute (PHP 8.0+)",
+        "category": "Metadata",
+        "tags": [
+            "attribute",
+            "metadata"
+        ]
+    },
+    "Named Arguments": {
+        "prefix": "named",
+        "body": [
+            "${1:functionName}(",
+            "    ${2:paramName}: ${3:value},",
+            ");"
+        ],
+        "description": "Use named arguments (PHP 8.0+)",
+        "category": "Functions",
+        "tags": [
+            "arguments",
+            "function"
+        ]
+    },
+    "Null Safe Operator": {
+        "prefix": "null-safe",
+        "body": [
+            "$${1:result} = $${2:object}?->${3:method}();"
+        ],
+        "description": "Use null safe operator (PHP 8.0+)",
+        "category": "Operators",
+        "tags": [
+            "null",
+            "operator"
+        ]
+    },
+    "Constructor Property Promotion": {
+        "prefix": "prop-promote",
+        "body": [
+            "public function __construct(",
+            "    private ${1:type} $${2:property},",
+            ") {",
+            "}"
+        ],
+        "description": "Constructor property promotion (PHP 8.0+)",
+        "category": "Classes",
+        "tags": [
+            "constructor",
+            "property"
+        ]
+    },
+    "Union Types": {
+        "prefix": "union",
+        "body": [
+            "private ${1:type1}|${2:type2} $${3:property};"
+        ],
+        "description": "Declare union types (PHP 8.0+)",
+        "category": "Types",
+        "tags": [
+            "union",
+            "type"
+        ]
+    },
+    "Intersection Types": {
+        "prefix": "intersection",
+        "body": [
+            "private ${1:type1}&${2:type2} $${3:property};"
+        ],
+        "description": "Declare intersection types (PHP 8.1+)",
+        "category": "Types",
+        "tags": [
+            "intersection",
+            "type"
+        ]
+    },
+    "First Class Callable": {
+        "prefix": "callable",
+        "body": [
+            "$${1:callback} = $${2:object}->${3:method}(...);",
+            "$${4:result} = $${1:callback}($${5:args});"
+        ],
+        "description": "First class callable syntax (PHP 8.1+)",
+        "category": "Functions",
+        "tags": [
+            "callable",
+            "function"
+        ]
+    }
+}
